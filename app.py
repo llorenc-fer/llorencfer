@@ -18,7 +18,7 @@ st.set_page_config(page_title='Basic Data Exploration: Titanic', layout='centere
 #-----cosas que podemos usar en toda nuestra app-------------------------------------------------------
 
 
-df = pd.read_csv(r'C:\Users\lluri\Documents\samplerepo\Upgrade Hub\Modulo 1\12-Scripts, APIs, Streamlit\Titanic Streamlit\titaniccsv.csv')
+df = pd.read_csv(r'C:\Users\lluri\Documents\Github\llorencfer\Titanic Streamlit\titaniccsv.csv')
 df.drop('Cabin', inplace=True, axis=1)
 df['Age'].fillna((df['Age'].mean()), inplace=True)
 df = df.fillna(df['Embarked'].value_counts().index[0])
