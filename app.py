@@ -122,7 +122,7 @@ with tab_plots:
     
     html = open("pruebamapa1.html", "r", encoding='utf-8').read()
     st.components.v1.html(html,height=600)
-    components.html("<html><center><h1>Hello, World</h1></center></html>", width=200, height=200)
+    #components.html("<html><center><h1>Hello, World</h1></center></html>", width=200, height=200)
     
     #components.iframe(r"C:\Users\lluri\Documents\samplerepo\Upgrade Hub\Modulo 1\12-Scripts, APIs, Streamlit\Titanic Streamlit\pruebamapa1.html", width=600, height=450)
 
