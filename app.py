@@ -211,7 +211,7 @@ with tab_plots:
     st.write('Image from data-science-blog.com')
 
     #loading the model
-    loaded_model = pickle.load(open('C:/Users\lluri/Documents/samplerepo/Upgrade Hub/Modulo 1/12-Scripts, APIs, Streamlit/Titanic Streamlit/trained_model_titanic.sav', 'rb'))
+    loaded_model = pickle.load(open('trained_model_titanic.sav', 'rb'))
     #creating a function for predicting
 
     def titanic_prediction(input_data):
