@@ -83,7 +83,7 @@ with tab_plots:
     st.plotly_chart(fig2)
 
 with tab_plots:
-      st.write('Port embarking by density')
+    st.write('Port embarking by density')
     html = open("pruebamapa1.html", "r", encoding='utf-8').read()
     st.components.v1.html(html,height=600)
     
