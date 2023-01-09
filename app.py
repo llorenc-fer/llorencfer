@@ -21,7 +21,7 @@ st.set_page_config(page_title='Basic Data Exploration: Titanic', layout='centere
 url = 'https://raw.githubusercontent.com/llorenc-fer/llorencfer/main/titaniccsv.csv'
 df = pd.read_csv(url, index_col=0)
 df.drop('Cabin', inplace=True, axis=1)
-df.drop('PassengerId', inplace=True, axis=1)
+#df.drop('PassengerId', inplace=True, axis=1)
 df['Age'].fillna((df['Age'].mean()), inplace=True)
 df = df.fillna(df['Embarked'].value_counts().index[0])
 
