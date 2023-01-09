@@ -16,7 +16,7 @@ from unicodedata import name
 
 st.set_page_config(page_title='Basic Data Exploration: Titanic', layout='centered', page_icon='🛥️')
 
-#-----cosas que podemos usar en toda nuestra app-------------------------------------------------------
+#-----data preprocessing-------------------------------------------------------
 
 url = 'https://raw.githubusercontent.com/llorenc-fer/llorencfer/main/titaniccsv.csv'
 df = pd.read_csv(url, index_col=0)
@@ -44,7 +44,7 @@ df.loc[df['Embarked']==2, 'lat'] = '-1.612260'
 
 
 
-#-----empieza la app-----------------------------------------------------------------------------------
+#-----app-----------------------------------------------------------------------------------
 st.image('https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/TitanicBeken.jpg/1920px-TitanicBeken.jpg')
 st.text("RMS Titanic off the Isle of Wight, based on photograph by Frank Beken of Cowes")
 st.title('Case Study: Titanic Census ')
@@ -52,25 +52,9 @@ st.text("Our first Streamlit Data App")
 
 st.write('Dataframe Overview')
 st.dataframe(df)
-#-----columnas-----------------------------------------------------------------------------------------
-# col1, col2 = st.columns(2)
 
-# with col1:
-#     st.write('Dataframe')
-#     st.dataframe(df)
-# with col2:
-    
-
-#-----tablas que podemos usar--------------------------------------------------------------------------
-#-----configuracion de tablas---------------------------------------------------------------------------
 tabs = st.tabs(['General Data Exploring', 'Survival Statistics','Survival Prediction Model'])
-#-----tabla 1-----------
-# tab_plots = tabs[0]
-# with tab_plots:
-#     col1, col2,col3 = st.columns(3)
-#     with col1:
-#         pass
-#     with col2:
+
 tab_plots = tabs[0]
 
 with tab_plots:        
@@ -100,37 +84,11 @@ with tab_plots:
 
 with tab_plots:
     
-    # st.write('Passenger Origin Distribution')
-    # sizearray = np.asarray(df['lon'].value_counts())
-    # latarray = np.asarray(df['lat'].unique())
-    # lonarray = np.asarray(df['lon'].unique())
-    # sizeref = 2.*max(sizearray)/(40.**2)
-
-    # fig = go.Figure(data=go.Scattergeo(lon=lonarray,
-    #                                lat=latarray,
-    #                                mode='markers',
-    #                                marker=dict(
-    #                                    size=sizearray,
-    #                                    sizemode='area',
-    #                                    sizeref=sizeref,
-    #                                    sizemin=4,
-    #                                    color=[
-    #                                        'rgb(93, 164, 214)',
-    #                                        'rgb(255, 144, 14)',
-    #                                        'rgb(44, 160, 101)'
-    #                                    ]
-    #                                )))
-
-    # fig.update_layout(autosize=True, height=600, title='Shipping Ports', geo_scope='europe')
-    # fig.update_geos(fitbounds="locations") 
-    # fig.show()
+   
     st.write('Port embarking by density')
     html = open("pruebamapa1.html", "r", encoding='utf-8').read()
     st.components.v1.html(html,height=600)
-    #components.html("<html><center><h1>Hello, World</h1></center></html>", width=200, height=200)
     
-    #components.iframe(r"C:\Users\lluri\Documents\samplerepo\Upgrade Hub\Modulo 1\12-Scripts, APIs, Streamlit\Titanic Streamlit\pruebamapa1.html", width=600, height=450)
-
 #-----tabla 2-----------
 tab_plots = tabs[1]
 with tab_plots:        
@@ -254,45 +212,5 @@ with tab_plots:
         main()
 
 
-
-# menu = option_menu(
-
-#     menu_title=None,
-#     options=["Introducción", "Dataframe", "Análisis"],
-#     icons= ["house", "list", "clipboard-plus"],
-#     menu_icon="cast",
-#     default_index=0,
-#     orientation="horizontal",
-#     styles="dark"
-# if menu =="Introducción":
-#     st.title("INTRODUCCIÓN")
-#     ....
-#     ....
-
-
-#-----sidebar------------------------------------------------------------------------------------------
-# st.set_option('deprecation.showPyplotGlobalUse', False) #para que no muestre warnings de versiones desfasadas
-# st.sidebar.title('estos son algunos menus')
-# st.sidebar.image('https://media.gettyimages.com/id/1310911999/es/foto/smoking-pipe-isolated-on-white-background.jpg?s=612x612&w=gi&k=20&c=G-4B2VqPafwGGgCa5bEPFV9jf6aao2xxXFE1wSrSv0Y=', width=100)
-# st.sidebar.write('un texto')
-# st.sidebar.write('---')
-# st.sidebar.write('ootro texto')
-# st.sidebar.write('---')
-# if st.sidebar.button('Ver Dataframe'):
-#     st.dataframe(df)
-# if st.sidebar.button('Segundo click'):
-#     st.write('Whoops! Algo salío mal')
-#     st.image('https://media.gettyimages.com/id/1310911999/es/foto/smoking-pipe-isolated-on-white-background.jpg?s=612x612&w=gi&k=20&c=G-4B2VqPafwGGgCa5bEPFV9jf6aao2xxXFE1wSrSv0Y=', width=100)
-
-# st.sidebar.slider('Slider sample', min_value=0,max_value=100)
-# st.sidebar.checkbox('check sample', help='select values')
-# st.sidebar.text_input(label='insert text')
-# if(st.sidebar.button('botón de prueba')):
-#     sns.set_theme(style='white')
-#     sns.relplot(data=df, kind='scatter')
-#     st.pyplot()
-
-## cd 'C:\Users\lluri\Documents\samplerepo\Upgrade Hub\Modulo 1\12-Scripts, APIs, Streamlit\Titanic Streamlit'
-## streamlit run app.py
 
 
