@@ -164,7 +164,7 @@ tab_plots = tabs[2]
 with tab_plots:
         #SURVIVAL PREDICTION MODEL--------------------------------------------------------------------
     st.title('Survival Prediction Model Web App')
-    st.write('Accuracy score is:  78,21%')
+    st.write('Accuracy score is: 80.75%(training data), 78.21%(test data)')
     st.image('https://data-science-blog.com/wp-content/uploads/2018/07/deep-learning-header-1030x352.png')
     st.write('Image from data-science-blog.com')
 
