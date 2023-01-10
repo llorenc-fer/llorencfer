@@ -26,23 +26,21 @@ df['Age'].fillna((df['Age'].mean()), inplace=True)
 df = df.fillna(df['Embarked'].value_counts().index[0])
 
 #Create column with age group
-df.loc[df['Age']<=19, 'age_group'] = 'Teenager (<19)'
+df.loc[df['Age']<=9, 'age_group'] = 'Child (<9)'
+df.loc[df['Age'].between(10,19), 'age_group'] = 'Teenager (10-19)'
 df.loc[df['Age'].between(20,29), 'age_group'] = 'Young adult (20-29)'
 df.loc[df['Age'].between(30,39), 'age_group'] = 'Adult (30-39)'
 df.loc[df['Age'].between(40,49), 'age_group'] = 'Adult (40-49)'
 df.loc[df['Age'].between(50,59), 'age_group'] = 'Older Adult (50-59)'
 df.loc[df['Age']>=60, 'age_group'] = 'Elder (>60)'
+especies = df['age_group'].value_counts()
 #Create column with latitude and longitude
 df.loc[df['Embarked']==0, 'lon'] = '50.896364'
 df.loc[df['Embarked']==1, 'lon'] = '51.850910'
 df.loc[df['Embarked']==2, 'lon'] = '49.648194'
-
 df.loc[df['Embarked']==0, 'lat'] = '-1.406013'
 df.loc[df['Embarked']==1, 'lat'] = '-8.294143'
 df.loc[df['Embarked']==2, 'lat'] = '-1.612260'
-
-
-
 
 #-----app-----------------------------------------------------------------------------------
 st.image('https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/TitanicBeken.jpg/1920px-TitanicBeken.jpg')
@@ -74,6 +72,7 @@ with tab_plots:
     fig0 = px.histogram(df, x ="Age", color='Sex', template='plotly_white', title="Edad de los pasajeros") #marker_color=colors)
     fig0.update_layout(title="Distribuición por edad y sexo", xaxis_title="Age", yaxis_title="People", template = 'plotly_dark',)
     st.plotly_chart(fig0)
+    st.text("An average of 29 years, with most of the population comprised between 20 and 40 years")
 
 with tab_plots:
     st.write('Age Group Distribution')
@@ -83,9 +82,11 @@ with tab_plots:
     st.plotly_chart(fig2)
 
 with tab_plots:
-    
-   
     st.write('Port embarking by density')
+    st.write('Number of people embarked in')
+    st.write('Southampton: 644')
+    st.write('Cherbourg:   168')
+    st.write('Queenstown:  77')
     html = open("pruebamapa1.html", "r", encoding='utf-8').read()
     st.components.v1.html(html,height=600)
     
@@ -105,6 +106,7 @@ with tab_plots:
         fig1.data[idx].name = name
         fig1.data[idx].hovertemplate = name
     st.plotly_chart(fig1)
+    st.write('High mortality among men, only 1 in 5 men survived, whereas 2 in 3 women survived')
 
 with tab_plots:
     st.write('Survival per Age')
@@ -128,6 +130,7 @@ with tab_plots:
     )
 )
     st.plotly_chart(fig3)
+    st.write('High mortality especially in ages 20-39, where 4 in 7 people died')
 
 with tab_plots:
     fig1_1 = px.histogram(df, x='age_group', color='Survived',labels={
@@ -158,6 +161,7 @@ with tab_plots:
         fig1_2.data[idx].name = name
         fig1_2.data[idx].hovertemplate = name
     st.plotly_chart(fig1_2)
+    st.write('High contrast between economic class, where more than 3 in 5 people in 3rd Class did not survive')
    
 #-----tabla 3-----------
 tab_plots = tabs[2]
