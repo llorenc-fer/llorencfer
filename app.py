@@ -74,6 +74,21 @@ with tab_plots:
     fig0.update_layout(title="Distribuición por edad y sexo", xaxis_title="Age", yaxis_title="People", template = 'plotly_dark',)
     st.plotly_chart(fig0)
     st.text("An average of 29 years, with most of the population comprised between 20 and 40 years")
+    
+with tab_plots:
+    fig0_1 = px.histogram(df, x='Pclass', color='Sex',template='plotly_white', labels={
+                     "Pclass": "Ticket class",
+                     "Sex": "Sex",
+                     },title="Ticket Class and Sex",text_auto=True)
+    fig0_1.update_layout(
+    xaxis = dict(
+        tickmode = 'array',
+        tickvals = [1, 2, 3],
+        ticktext = ['First Class', 'Second Class', 'Third Class']
+    )
+)
+    st.plotly_chart(fig0_1)
+
 
 with tab_plots:
     st.write('Age Group Distribution')
