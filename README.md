@@ -8,3 +8,6 @@ In the exploratory data analysis section, we aim to understand the structure and
 Finally, in the model deployment, we evaluate its performance using various metrics and let the user input data of a hypothetical passenger and check if it would survive.
 
 We hope that this repository serves as a helpful resource for anyone looking to gain a deeper understanding of the data analysis and machine learning process.
+
+Full deploy can be found here:
+https://llorenc-fer-titanic-app-hegk6u.streamlit.app/
